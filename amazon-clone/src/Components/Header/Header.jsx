@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { ImLocation2 } from "react-icons/im";
 import { FaSearch } from "react-icons/fa";
 import { BiCart } from "react-icons/bi";
+import LowerHeader from './LowerHeader';
 
 function Header() {
   return (
@@ -73,7 +74,10 @@ function Header() {
 
 
 
+
+
       </section>
+      <LowerHeader />
     </section>
   )
 }
