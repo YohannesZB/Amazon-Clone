@@ -1,3 +1,12 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+.fixed{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 .header__container {
   background-color: #1a1a1a;
   display: flex;
@@ -39,7 +48,6 @@
   flex: 1;
 }
 .search select,
-
 .search input {
   padding: 10px;
   font-weight: bold;
@@ -76,7 +84,7 @@
   color: white;
 }
 .order__container p {
-  font-size: 10px;
+  font-size: 13px;
 }
 .language {
   width: 100px;
@@ -97,10 +105,10 @@
 .cart span {
   position: absolute;
   font-weight: bold;
-  top: 0px;
+  top: -6px;
   font-size: 20px;
   background-color: #1a1a1a;
-  left: 16px;
+  left: 14px;
   color: orange;
 }
 
