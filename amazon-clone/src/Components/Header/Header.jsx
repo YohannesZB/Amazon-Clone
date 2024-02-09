@@ -36,7 +36,7 @@ function Header() {
           <option value="">All</option>
           </select>
           < input type='text' name='' id='' placeholder='search product' />
-          <FaSearch size={25}/>
+          <FaSearch size={40}/>
         </div>
         {/* right side link */}
         <div className={classes.order__container}>
@@ -59,8 +59,8 @@ function Header() {
             <span>& Orders</span>
           </a>
           {/* cart */}
-          <a href='' className={classes.cart} >
-          <BiCart size={25}/>
+          <a href='/cart' className={classes.cart} >
+          <BiCart size={35}/>
             <span>0</span>
           </a>
 
