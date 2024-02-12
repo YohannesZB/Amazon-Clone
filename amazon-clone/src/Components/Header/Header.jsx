@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import classes from './Header.module.css'
 import { Link } from "react-router-dom"
 import { ImLocation2 } from "react-icons/im";
 import { FaSearch } from "react-icons/fa";
 import { BiCart } from "react-icons/bi";
 import LowerHeader from './LowerHeader';
+import { DataContext } from '../DataProvider/DataProvider';
+import { auth } from "../../Utility/firebase"
 
 function Header() {
+const [{user, basket},dispatch]= useContext(DataContext)
+const totalItem = basket?.reduce((amount, item)=>amount + item.amount,0)
+console.log(totalItem, "basket total item")
+
+
   return (
     <section className={classes.fixed}>
       <section>
@@ -47,22 +54,22 @@ function Header() {
             </select>
           </div>
           {/* three components */}
-          <a href='' >
+          <Link to ='' >
             <div>
               <p>Sign In</p>
               <span>Account & Lists</span>
             </div>
-          </a>
+          </Link>
           {/* orders */}
           <a href='' >
             <p>returns</p>
             <span>& Orders</span>
           </a>
           {/* cart */}
-          <a href='/cart' className={classes.cart} >
+          <Link to='/cart' className={classes.cart} >
           <BiCart size={35}/>
-            <span>0</span>
-          </a>
+            <span>{totalItem}</span>
+          </Link>
 
 
 

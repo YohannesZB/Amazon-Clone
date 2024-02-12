@@ -1,11 +1,11 @@
 import React, { useState, useContext} from 'react'
 import classes from './Auth.module.css'
 import { Link, useNavigate } from 'react-router-dom'
-import { auth } from "../Utility/firebase";
+import { auth } from "../../Utility/firebase";
 import { ClipLoader } from 'react-spinners';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth"
 import { DataContext } from '../../Components/DataProvider/DataProvider';
-import { Type } from '../Utility/action.type'
+import { Type } from '../../Utility/action.type'
 
 
 
@@ -19,6 +19,7 @@ function Auth() {
         signUp: false
     });
     const navigate = useNavigate()
+    console.log(user);
 
     const authHandler = async (e)=> {
       e.preventDefault();
@@ -26,6 +27,7 @@ function Auth() {
         setLoading({...loading, signIn:true})
         signInWithEmailAndPassword(auth, email, password)
         .then((userInfo)=>{
+          // console.log(userInfo)
           dispatch({
             type: Type.SET_USER,
             user: userInfo.user,
@@ -64,16 +66,17 @@ function Auth() {
                 <form action="">
                     <div>
                         <label htmlFor="email">Email</label>
-                        <input value={email}  onChange={(e)=>setEmail(e.target.value)} type="email" 
+                        <input value={email}  onChange={(e)=>setEmail(e.target.value)} 
+                        type="email" 
                         id='email'
                         autoComplete="username"/>
                         
                     </div>
                     <div>
                     <label htmlFor="password">password</label>
-                        <input 
-                        value={password} 
-                        onChange={(e)=>setPassword(e.target.value)} type="password" id='password'
+                        <input value={password} 
+                        onChange={(e)=>setPassword(e.target.value)} type="password" 
+                        id='password'
                         autoComplete="current-password"/>
                     </div>
                     <button 

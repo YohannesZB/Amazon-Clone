@@ -18,9 +18,9 @@ export const reducer = (state, action) => {
           basket: [...state.basket, { ...action.item, amount: 1 }],
         };
       } else {
-        const updatedBasket = state.basket.map((item) =>
-          item.id === action.item.id ? { ...item, amount: item.amount + 1 } : item
-        );
+        const updatedBasket = state.basket?.map((item) => {
+          return item.id === action.item.id ? { ...item, amount: item.amount + 1 } : item
+      });
 
         return {
           ...state,

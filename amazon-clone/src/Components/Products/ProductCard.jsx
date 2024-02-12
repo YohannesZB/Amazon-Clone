@@ -1,11 +1,12 @@
 import React, { useContext }  from 'react'
-import Rating from '@mui/lab/Rating';
+//import Rating from '@mui/lab/Rating';
+import { Rating } from '@mui/material'
 
 import CurrencyFormat from '../CurrencyFormat/CurrencyFormat'
 import classes from './Products.module.css'
 import {Link} from 'react-router-dom'
 import { DataContext } from '../DataProvider/DataProvider'
-import {Type} from '../../Pages/Utility/action.type'
+import {Type} from '../../Utility/action.type'
 
 function ProductCard({product, flex, renderDesc, renderAdd}) {
     const { image, title, id, rating, price, description } = product;
@@ -18,6 +19,7 @@ function ProductCard({product, flex, renderDesc, renderAdd}) {
 
 
         const addToCart = ()=>{
+          console.log("add to cart")
             dispatch({
                 type:Type.ADD_TO_BASKET,
                 item:{
