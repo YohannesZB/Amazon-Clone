@@ -7,6 +7,7 @@ import { productUrl } from '../../Api/endPoint'
 import ProductCard from '../../Components/Products/ProductCard'
 import Loader from '../../Components/LayOut/Loader/loader'
 
+
 function Results() {
     const [results, setResults] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
