@@ -54,7 +54,7 @@ const handlePayment = async (event) => {
     });
 
     // console.log(response.data);
-    const clientSecret = response.data?.cliantSecret;
+    const clientSecret = response.data?.clientSecret;
 
     const{ paymentIntent} = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
@@ -64,18 +64,24 @@ const handlePayment = async (event) => {
 
     console.log(paymentIntent);
 
-    
+   try {
     await db
-  .collection("users")
-  .doc(user.uid)
-  .collection("orders")
-  .doc(paymentIntent.id)
-  .set({
-    basket: basket,
-    amount: paymentIntent.amount,
-    created: paymentIntent.created,
-  });
-  dispatch({type:Type.EMPTY_BASKET})
+    .collection("users")
+    .doc(user.uid)
+    .collection("orders")
+    .doc(paymentIntent.id)
+    .set({
+      basket: basket,
+      amount: paymentIntent.amount,
+      created: paymentIntent.created,
+    });
+    dispatch({type:Type.EMPTY_BASKET})
+    console.log("succesfull to firebase")
+
+   } catch(err){
+    console.error("this is the firebase error",err)
+   }
+  
   setProcessing(false);
   navigate("/orders", { state: { message: "You have placed a new order." } });
   
@@ -83,7 +89,7 @@ const handlePayment = async (event) => {
     console.error(error);
     setProcessing(false)
 
-    setCardError("An error occurred during payment. Please try again later.");
+    // setCardError("An error occurred during payment. Please try again later.");
     // console.log(error.message)
   }
 };

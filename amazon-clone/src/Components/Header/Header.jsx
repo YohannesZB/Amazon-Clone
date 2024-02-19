@@ -34,7 +34,7 @@ const totalItem = basket?.reduce((amount, item) => {
           </span>
           <div>
             <p>Delivered to</p>
-            <span>Asmara</span>
+            <span>USA</span>
           </div>
           </div>
         </div>
